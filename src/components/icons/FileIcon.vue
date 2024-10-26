@@ -1,0 +1,4 @@
+<template>
+  <!--  credit:  https://icons8.com/icons/set/file -->
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="22px" height="22px" fill-rule="nonzero"><g fill="#20c997" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M4,19v-14c0,-1.657 1.343,-3 3,-3h7l6,6v11c0,1.657 -1.343,3 -3,3h-10c-1.657,0 -3,-1.343 -3,-3z" opacity="0.35"></path><path d="M14,6v-4l6,6h-4c-1.105,0 -2,-0.895 -2,-2z"></path></g></g></svg>
+</template>
