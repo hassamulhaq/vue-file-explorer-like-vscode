@@ -4,7 +4,7 @@ import AddIcon from "./icons/AddIcon.vue";
 </script>
 
 <template>
-  <button class="bg-transparent" @click="alert('clicked')">
+  <button class="addFolderButton hover:text-green-500 bg-transparent">
     <AddIcon />
   </button>
 </template>
