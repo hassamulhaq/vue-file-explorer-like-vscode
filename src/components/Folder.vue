@@ -48,11 +48,6 @@ const handleInputValue = (obj) => {
   }
 
   if (value !== '' && value.includes('.')) {
-    /**
-     * created_at: new Date().toISOString(),
-     * updated_at: new Date().toISOString(),
-     * children: []
-     */
     const newNode = {
       id: `${props.node.children.length + 1}`,
       type: 'file',
@@ -60,7 +55,6 @@ const handleInputValue = (obj) => {
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     };
-
     props.node.children.push(newNode);
     isValidValue = true;
   } else if (value !== '') {

@@ -5,7 +5,7 @@ import AddIcon from "./components/icons/AddIcon.vue";
 import Input from "./components/Input.vue";
 import {ref} from "vue";
 
-const initialTree = [
+const initialTree = ref([
   {
     "id": "1",
     "type": "folder",
@@ -74,7 +74,7 @@ const initialTree = [
     "created_at": "2021-06-01 12:00:00",
     "updated_at": "2021-06-01 21:30:00"
   }
-];
+]);
 
 const fileClicked = (e) => {
   console.log(e);
@@ -83,18 +83,59 @@ const fileClicked = (e) => {
 const showInput = ref(false);
 const inputValue = ref('');
 
+const handleInputValue = (e) => {
+  const isFileAlreadyExists = initialTree.value.some(child => child.name === e.target.value);
+  if (isFileAlreadyExists) {
+    alert('File already exists');
+    return;
+  }
+  let isValidValue = false;
+
+  const lastChild = initialTree.value[initialTree.value.length - 1];
+  const lastChildId = lastChild.id;
+
+  if (e.target.value !== '' && e.target.value.includes('.')) {
+    const newNode = {
+      id: `${Number(lastChildId) + 1}`,
+      type: 'file',
+      name: e.target.value,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    };
+    initialTree.value.push(newNode);
+    isValidValue = true;
+  } else if (e.target.value !== '') {
+    const newNode = {
+      id: `${Number(lastChildId) + 1}`,
+      type: 'folder',
+      name: e.target.value,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      children: []
+    };
+    initialTree.value.push(newNode);
+    isValidValue = true;
+  }
+
+  if (isValidValue) {
+    inputValue.value = '';
+  }
+};
+
 </script>
 
 <template>
   <div>
     <div class="h-screen overflow-hidden bg-amber-100">
       <div class="flex">
-        <div class="bg-zinc-800 h-screen w-[360px] p-3.5">
+        <div class="bg-zinc-800 h-screen overflow-y-auto w-[360px] p-3.5">
           <div class="flex justify-end h-[26px]">
             <Input
                 v-if="showInput"
                 v-model="inputValue"
-                node-id="0" />
+                node-id="0"
+                @keydown.enter="handleInputValue"
+            />
             <button @click="showInput = !showInput" class="text-white hover:text-green-500 bg-transparent">
               <AddIcon />
             </button>
